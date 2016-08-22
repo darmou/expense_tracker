@@ -3,12 +3,13 @@ import { Route, IndexRoute } from 'react-router';
 import Layout from '../layout/Layout';
 import TestReactRouter from '../components/TestReactRouter/TestReactRouter';
 import TestReactRouterRedirect from '../components/TestReactRouterRedirect/TestReactRouterRedirect';
-import RouterCommentsContainer from '../containers/RouterCommentsContainer';
+import SimpleCommentScreen from '../components/SimpleCommentScreen/SimpleCommentScreen';
+import RouterExpensesContainer from '../containers/RouterExpensesContainer';
 
 export default (
   <Route path="/" component={Layout}>
     <IndexRoute
-      component={RouterCommentsContainer}
+      component={RouterExpensesContainer}
     />
     <Route
       path="react-router"
@@ -19,5 +20,10 @@ export default (
       component={TestReactRouterRedirect}
       onEnter={TestReactRouterRedirect.checkAuth}
     />
+      <Route
+          path="expenses"
+          component={SimpleCommentScreen}
+      />
+
   </Route>
 );

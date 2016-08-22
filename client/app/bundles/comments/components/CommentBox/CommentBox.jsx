@@ -5,6 +5,7 @@ import CommentList from './CommentList/CommentList';
 import css from './CommentBox.scss';
 import BaseComponent from 'libs/components/BaseComponent';
 
+
 export default class CommentBox extends BaseComponent {
   static propTypes = {
     pollInterval: PropTypes.number.isRequired,
@@ -48,7 +49,7 @@ export default class CommentBox extends BaseComponent {
           cssTransitionGroupClassNames={cssTransitionGroupClassNames}
         />
         <CommentList
-          $$comments={data.get('$$comments')}
+          $$expenses={data.get('$$expenses')}
           error={data.get('fetchCommentError')}
           cssTransitionGroupClassNames={cssTransitionGroupClassNames}
         />

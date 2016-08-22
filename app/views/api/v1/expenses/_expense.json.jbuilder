@@ -1,0 +1,1 @@
+json.extract! expense, :id, :title, :expense_type, :amount, :receipt_url, :description, :created_at, :updated_at

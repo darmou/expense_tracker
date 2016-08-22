@@ -1,12 +1,12 @@
-import commentsReducer, { $$initialState as $$commentsState } from './commentsReducer';
+import expensesReducer, { $$initialState as $$expensesState } from './expensesReducer';
 import railsContextReducer, { initialState as railsContextState } from './railsContextReducer';
 
 export default {
-  $$commentsStore: commentsReducer,
+  $$expensesStore: expensesReducer,
   railsContext: railsContextReducer,
 };
 
 export const initialStates = {
-  $$commentsState,
+  $$expensesState,
   railsContextState,
 };

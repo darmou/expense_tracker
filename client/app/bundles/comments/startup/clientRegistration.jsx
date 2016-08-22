@@ -1,8 +1,8 @@
 import App from './App';
 import RouterApp from './ClientRouterApp';
 import SimpleCommentScreen from '../components/SimpleCommentScreen/SimpleCommentScreen';
-import routerCommentsStore from '../store/routerCommentsStore';
-import commentsStore from '../store/commentsStore';
+import routerExpensesStore from '../store/routerExpensesStore';
+import expensesStore from '../store/expensesStore';
 import NavigationBarApp from './NavigationBarApp';
 import ReactOnRails from 'react-on-rails';
 
@@ -18,6 +18,6 @@ ReactOnRails.register({
 });
 
 ReactOnRails.registerStore({
-  routerCommentsStore,
-  commentsStore,
+  routerExpensesStore,
+  expensesStore,
 });

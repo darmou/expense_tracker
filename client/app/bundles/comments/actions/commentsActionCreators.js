@@ -42,6 +42,7 @@ export function submitCommentFailure(error) {
 }
 
 export function fetchComments() {
+  debugger;
   return dispatch => {
     dispatch(setIsFetching());
     return (

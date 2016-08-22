@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  devise_for :users
+  scope :auth do
+    get 'is_signed_in', to: 'auth#is_signed_in?'
+  end
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   # Serve websocket cable requests in-process
@@ -9,8 +14,19 @@ Rails.application.routes.draw do
   get "simple", to: "pages#simple"
   get "no-router", to: "pages#no_router"
 
+  get "expenses(/*all)", to: "pages#index"
+
   # React Router needs a wildcard
   get "react-router(/*all)", to: "pages#index"
+
+
+  namespace :api, :defaults => { :format => :json } do
+    namespace :v1 do
+      resources :expenses do
+      end
+    end
+  end
+
 
   resources :comments
 end

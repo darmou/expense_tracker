@@ -5,6 +5,7 @@ ruby "2.3.1"
 # Bundle edge Rails instead: gem "rails", github: "rails/rails"
 gem "rails"
 gem "listen"
+gem "devise"
 
 # Note: We're using sqllite3 for development and testing
 gem "sqlite3", group: [:development, :test]
@@ -23,6 +24,8 @@ gem "sass-rails"
 gem "uglifier"
 # Use CoffeeScript for .js.coffee assets and views
 gem "coffee-rails"
+gem "carrierwave"
+gem 'carrierwave-base64'
 
 # Turbolinks makes following links in your web application faster.
 # Read more: https://github.com/turbolinks/turbolinks

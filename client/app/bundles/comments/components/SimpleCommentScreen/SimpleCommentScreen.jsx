@@ -13,7 +13,7 @@ export default class SimpleCommentScreen extends BaseComponent {
   constructor(props, context) {
     super(props, context);
     this.state = {
-      $$comments: Immutable.fromJS([]),
+      $$expenses: Immutable.fromJS([]),
       isSaving: false,
       fetchCommentsError: null,
       submitCommentError: null,
@@ -30,12 +30,12 @@ export default class SimpleCommentScreen extends BaseComponent {
     return (
       request
         .get('comments.json', { responseType: 'json' })
-        .then(res => this.setState({ $$comments: Immutable.fromJS(res.data.comments) }))
+        .then(res => this.setState({ $$expenses: Immutable.fromJS(res.data.expenses) }))
         .catch(error => this.setState({ fetchCommentsError: error }))
     );
   }
 
-  _handleCommentSubmit(comment) {
+  _handleCommentSubmit(expense) {
     this.setState({ isSaving: true });
 
     const requestConfig = {
@@ -47,13 +47,13 @@ export default class SimpleCommentScreen extends BaseComponent {
 
     return (
       request
-        .post('comments.json', { comment }, requestConfig)
+        .post('comments.json', { expense }, requestConfig)
         .then(() => {
-          const { $$comments } = this.state;
-          const $$comment = Immutable.fromJS(comment);
+          const { $$expenses } = this.state;
+          const $$expense = Immutable.fromJS(expense);
 
           this.setState({
-            $$comments: $$comments.unshift($$comment),
+            $$expenses: $$expenses.unshift($$expense),
             isSaving: false,
           });
         })
@@ -76,7 +76,7 @@ export default class SimpleCommentScreen extends BaseComponent {
 
     return (
       <div className="commentBox container">
-        <h2>Comments</h2>
+        <h2>Expenses</h2>
         <p>
           Text take Github Flavored Markdown. Comments older than 24 hours are deleted.<br />
           <b>Name</b> is preserved. <b>Text</b> is reset, between submits.
@@ -88,7 +88,7 @@ export default class SimpleCommentScreen extends BaseComponent {
           cssTransitionGroupClassNames={cssTransitionGroupClassNames}
         />
         <CommentList
-          $$comments={this.state.$$comments}
+          $$expenses={this.state.$$expenses}
           error={this.state.fetchCommentsError}
           cssTransitionGroupClassNames={cssTransitionGroupClassNames}
         />

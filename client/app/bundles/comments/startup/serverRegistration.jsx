@@ -4,8 +4,8 @@ import RouterApp from './ServerRouterApp';
 import SimpleCommentScreen from '../components/SimpleCommentScreen/SimpleCommentScreen';
 import ReactOnRails from 'react-on-rails';
 import NavigationBarApp from './NavigationBarApp';
-import routerCommentsStore from '../store/routerCommentsStore';
-import commentsStore from '../store/commentsStore';
+import routerExpensesStore from '../store/routerExpensesStore';
+import expensesStore from '../store/expensesStore';
 
 ReactOnRails.register(
   {
@@ -17,6 +17,6 @@ ReactOnRails.register(
 );
 
 ReactOnRails.registerStore({
-  routerCommentsStore,
-  commentsStore,
+    routerExpensesStore,
+    expensesStore,
 });

@@ -5,11 +5,36 @@
     padding-top: 20px;
   }
 
+  .edt-logo {
+    width: 300px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
   .active:visited,
   .active {
     color: purple;
     font-weight: bold;
     text-decoration: underline;
+  }
+
+
+  .form-signin {
+    max-width: 330px;
+    padding: 15px;
+    margin: 0 auto;
+
+    button {
+      margin-top: 30px;
+    }
+  }
+
+  h1 {
+    width: 306px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   // scss-lint:disable IdSelector

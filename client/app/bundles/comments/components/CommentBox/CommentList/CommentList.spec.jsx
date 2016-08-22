@@ -34,7 +34,7 @@ describe('CommentList', () => {
   it('renders a list of Comments in normal order', () => {
     const component = renderIntoDocument(
       <CommentList
-        $$comments={comments}
+        $$expenses={expenses}
         cssTransitionGroupClassNames={cssTransitionGroupClassNames}
       />
     );
@@ -47,12 +47,12 @@ describe('CommentList', () => {
   it('renders an alert if errors', () => {
     const component = renderIntoDocument(
       <CommentList
-        $$comments={comments} error="zomg"
+        $$expenses={expenses} error="zomg"
         cssTransitionGroupClassNames={cssTransitionGroupClassNames}
       />
     );
 
     const alert = findRenderedDOMComponentWithTag(component, 'strong');
-    expect(alert.textContent).to.equal('Comments could not be retrieved. ');
+    expect(alert.textContent).to.equal('Expensese could not be retrieved. ');
   });
 });

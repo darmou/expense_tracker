@@ -29,6 +29,7 @@ export default class CommentScreen extends BaseComponent {
 
     return (
       <div>
+        <h1>I am in comments</h1>
         {this._renderNotification()}
         <div>
           <CommentBox

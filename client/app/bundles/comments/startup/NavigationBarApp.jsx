@@ -19,14 +19,15 @@ export default (_props, railsContext) => {
   const { pathname } = railsContext;
   let store;
   if (pathname === paths.ROUTER_PATH) {
-    store = ReactOnRails.getStore('routerCommentsStore', false);
+    store = ReactOnRails.getStore('routerExpensesStore', false);
   } else if (pathname === paths.NO_ROUTER_PATH) {
-    store = ReactOnRails.getStore('commentsStore', false);
+    store = ReactOnRails.getStore('expensesStore', false);
   } else {
     return (
       <NavigationBar {...{ pathname }} />
     );
   }
+
 
   return (
     <Provider store={store}>

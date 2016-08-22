@@ -5,21 +5,21 @@ import Immutable from 'immutable';
 import * as actionTypes from '../constants/commentsConstants';
 
 export const $$initialState = Immutable.fromJS({
-  $$comments: [],
+  $$expenses: [],
   fetchCommentError: null,
   submitCommentError: null,
   isFetching: false,
   isSaving: false,
 });
 
-export default function commentsReducer($$state = $$initialState, action = null) {
-  const { type, comment, comments, error } = action;
+export default function expensesReducer($$state = $$initialState, action = null) {
+  const { type, expense, expenses, error } = action;
 
   switch (type) {
 
     case actionTypes.FETCH_COMMENTS_SUCCESS: {
       return $$state.merge({
-        $$comments: comments,
+        $$expenses: expenses,
         fetchCommentError: null,
         isFetching: false,
       });
@@ -37,7 +37,7 @@ export default function commentsReducer($$state = $$initialState, action = null)
         state
           .updateIn(
             ['$$comments'],
-            $$comments => $$comments.unshift(Immutable.fromJS(comment))
+              $$expenses => $$expenses.unshift(Immutable.fromJS(expense))
           )
           .merge({
             submitCommentError: null,

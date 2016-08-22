@@ -1,7 +1,7 @@
 import request from 'axios';
 import metaTagsManager from './metaTagsManager';
 
-const API_URL = 'comments.json';
+const API_URL = 'api/v1/expenses';
 
 export default {
 

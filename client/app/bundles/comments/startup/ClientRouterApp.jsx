@@ -7,7 +7,7 @@ import routes from '../routes/routes';
 import { syncHistoryWithStore } from 'react-router-redux';
 
 export default (_props, _railsContext) => {
-  const store = ReactOnRails.getStore('routerCommentsStore');
+  const store = ReactOnRails.getStore('routerExpensesStore');
 
   // Create an enhanced history that syncs navigation events with the store
   const history = syncHistoryWithStore(

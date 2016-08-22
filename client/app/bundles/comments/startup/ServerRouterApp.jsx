@@ -6,7 +6,7 @@ import { match, RouterContext } from 'react-router';
 import routes from '../routes/routes';
 
 export default (props, railsContext) => {
-  const store = ReactOnRails.getStore('routerCommentsStore');
+  const store = ReactOnRails.getStore('routerExpensesStore');
 
   let error;
   let redirectLocation;
