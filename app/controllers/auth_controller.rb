@@ -7,4 +7,11 @@ class AuthController < ApplicationController
     end
  
   end
+
+  def sign_user_out
+    user = User.find(params[:user_id])
+    sign_out user
+    reset_session
+    render json: {success: true, signed_in: false}, status: 200
+  end
 end

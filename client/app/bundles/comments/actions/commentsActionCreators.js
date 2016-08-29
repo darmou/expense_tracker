@@ -13,10 +13,17 @@ export function setIsSaving() {
   };
 }
 
+export function setClearStore() {
+  return {
+    type: actionTypes.CLEAR_EXPENSES,
+    expenses: [],
+  };
+}
+
 export function fetchCommentsSuccess(data) {
   return {
     type: actionTypes.FETCH_COMMENTS_SUCCESS,
-    comments: data.comments,
+    expenses: JSON.parse(data.expenses),
   };
 }
 
@@ -41,16 +48,22 @@ export function submitCommentFailure(error) {
   };
 }
 
-export function fetchComments() {
-  debugger;
+export function fetchExpenses(user_id) {
   return dispatch => {
     dispatch(setIsFetching());
     return (
       requestsManager
-        .fetchEntities()
+        .fetchEntities(user_id)
         .then(res => dispatch(fetchCommentsSuccess(res.data)))
         .catch(res => dispatch(fetchCommentsFailure(res.data)))
     );
+  };
+}
+
+export  function clearExpenses() {
+  return dispatch => {
+    dispatch(setClearStore());
+
   };
 }
 

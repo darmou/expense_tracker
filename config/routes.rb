@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   scope :auth do
     get 'is_signed_in', to: 'auth#is_signed_in?'
+    post 'sign_user_out', to: 'auth#sign_user_out'
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

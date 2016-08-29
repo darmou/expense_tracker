@@ -6,6 +6,7 @@ import {Link} from 'react-router';
 import CommentScreen from '../components/CommentScreen/CommentScreen';
 import * as commentsActionCreators from '../actions/commentsActionCreators';
 import BaseComponent from 'libs/components/BaseComponent';
+import Functions from '../utils/functions';
 
 function select(state) {
   // Which part of the Redux global state does our component want to receive as props?
@@ -25,12 +26,18 @@ class RouterCommentsContainer extends BaseComponent {
     router: React.PropTypes.object
   }
 
+
   constructor(props) {
     super(props);
     //context.router
     this.state = {
       email: "",
       password: ""
+    };
+
+    this.ALERT_TYPE = {
+      ERROR : 0,
+      ALERT: 1
     };
 
     // Bind callback methods to make `this` the correct context.
@@ -52,10 +59,50 @@ class RouterCommentsContainer extends BaseComponent {
   }
 
 
+  displayAndRemoveAlert(alert_message, alert_type) {
+    var message_id = '#alert_message';
+    var block_id = '#expense-alert';
+
+    if(alert_type == this.ALERT_TYPE.ERROR) {
+      message_id = '#alert_error_message';
+      block_id = '#expense-error';
+    }
+
+    $(message_id).html(alert_message);
+    $(block_id).attr("style","display:block;");
+    window.setTimeout(function() {
+      $(block_id).fadeTo(500, 0).slideUp(500, function(){
+        $(block_id).attr("style","display:none;");
+      });
+    }, 5000);
+}
+
+
   onSubmit(e) {
     e.preventDefault();
+
+    //We actually want to use an ajax call to login in aget the user id
+    //Once we have that we can actually log in
     // this.context.router.transitionTo('/expenses');
-    this.context.router.push('/react-router');
+
+    $.ajax({
+      method: "POST",
+      url: "/users/sign_in.json",
+      data: {
+        user: {
+          email: this.state.email,
+          password: this.state.password
+        },
+        authenticity_token: Functions.getMetaContent("csrf-token")
+      }
+    })
+        .done(function(data){
+          this.context.router.push('/react-router/' + data.id);
+          //location.reload();
+        }.bind(this)).fail(function(data) {
+              this.displayAndRemoveAlert(JSON.parse(data.responseText).error, this.ALERT_TYPE.ERROR);
+        }.bind(this));
+
   }
 
   render() {
@@ -65,6 +112,13 @@ class RouterCommentsContainer extends BaseComponent {
 
     return (
         <section>
+
+          <div className="col-xs-12" id="expense-error" style={{"display":"none"}}>
+            <div className="alert alert-danger fade in" style={{"marginTop":"18px"}}>
+              <a href="#" className="close" data-dismiss="alert" aria-label="close" title="close">x</a>
+              <span id="alert_error_message"></span>
+            </div>
+          </div>
         <h1>Please Login</h1>
             <form onSubmit={this.onSubmit} className="form-signin">
 

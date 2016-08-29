@@ -1,7 +1,7 @@
 import request from 'axios';
 import metaTagsManager from './metaTagsManager';
 
-const API_URL = 'api/v1/expenses';
+const API_URL = '/api/v1/expenses/?user_id=';
 
 export default {
 
@@ -10,10 +10,10 @@ export default {
    *
    * @returns {Promise} - Result of ajax call.
    */
-  fetchEntities() {
+  fetchEntities(user_id) {
     return request({
       method: 'GET',
-      url: API_URL,
+      url: API_URL + user_id,
       responseType: 'json',
     });
   },

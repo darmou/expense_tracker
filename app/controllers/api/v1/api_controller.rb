@@ -1,11 +1,11 @@
-module API::V1
+module Api::V1
   class ApiController < ActionController::Base
     #protect_from_forgery with: :null_session
     respond_to :json
 
     private
     def current_user
-     # @current_user ||= User.find(doorkeeper_token.resource_owner_id) if doorkeeper_token
+      @current_user ||= User.find(doorkeeper_token.resource_owner_id) if doorkeeper_token
     end
 
     def parse_since

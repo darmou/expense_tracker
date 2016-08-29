@@ -40,9 +40,9 @@
   },
   "homepage": "https://github.com/shakacode/react-webpack-rails-tutorial",
   "dependencies": {
+    "react-lightbox-component": "^0.2.0"
   },
-  "devDependencies": {
-  },
+  "devDependencies": {},
   "cacheDirectories": [
     "node_modules",
     "client/node_modules"

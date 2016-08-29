@@ -15,9 +15,19 @@ export const $$initialState = Immutable.fromJS({
 export default function expensesReducer($$state = $$initialState, action = null) {
   const { type, expense, expenses, error } = action;
 
+
   switch (type) {
 
+
     case actionTypes.FETCH_COMMENTS_SUCCESS: {
+      return $$state.merge({
+        $$expenses: expenses,
+        fetchCommentError: null,
+        isFetching: false,
+      });
+    }
+
+    case actionTypes.CLEAR_EXPENSES: {
       return $$state.merge({
         $$expenses: expenses,
         fetchCommentError: null,
@@ -36,7 +46,7 @@ export default function expensesReducer($$state = $$initialState, action = null)
       return $$state.withMutations(state => (
         state
           .updateIn(
-            ['$$comments'],
+            ['$$expenses'],
               $$expenses => $$expenses.unshift(Immutable.fromJS(expense))
           )
           .merge({

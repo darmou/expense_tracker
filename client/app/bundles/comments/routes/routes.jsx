@@ -12,7 +12,7 @@ export default (
       component={RouterExpensesContainer}
     />
     <Route
-      path="react-router"
+      path="react-router/:id"
       component={TestReactRouter}
     />
     <Route

@@ -63,6 +63,10 @@ group :development do
   gem "web-console"
 end
 
+gem 'lightbox2-rails'
+
+gem "activerecord-session_store"
+
 group :development, :test do
   ################################################################################
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring

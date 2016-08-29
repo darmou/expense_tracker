@@ -22,7 +22,7 @@ class PagesController < ApplicationController
     #   format.html
     # end
 
-    redux_store("routerExpensesStore", props: expenses_json_string)
+    redux_store("routerExpensesStore", props:expenses_json_string)
     render_html
   end
 
@@ -39,7 +39,11 @@ class PagesController < ApplicationController
   private
 
   def set_expenses
-    @expenses = Expense.all.order("id DESC")
+    if(params.key?(:user_id))
+      @expenses = Expense.all.where(:user_id=>params[:user_id]).order("id DESC")
+    else
+      @expenses = []
+    end
   end
 
   def expenses_json_string
@@ -48,7 +52,7 @@ class PagesController < ApplicationController
     #require 'pry'
     #binding.pry
     render_to_string(template: "/api/v1/expenses/index.json.jbuilder",
-                     locals: { expenses: Expense.all }, format: :json)
+                     locals: { expenses: @expenses }, format: :json)
   end
 
   def render_html
